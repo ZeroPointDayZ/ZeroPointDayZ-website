@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ZeroPoint DayZ — Priority & Donate</title>
+  <meta name="description" content="Support ZeroPoint DayZ and get Priority Queue access. Donate securely via PayPal." />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --accent:#00ff9d;
+      --bg:#0b0b0b;
+      --card:#131313;
+      --muted:#a9b0b3;
+      --text:#e7ecef;
+      --ring:rgba(0,255,157,.3);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      background: var(--bg) url('background.jpg') center/cover fixed no-repeat;
+      color:var(--text);
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      line-height:1.6;
+    }
+    .overlay{
+      position:fixed; inset:0;
+      background: radial-gradient(1200px 800px at 30% -10%, rgba(0,255,157,.06), transparent 60%),
+                  radial-gradient(900px 700px at 100% 20%, rgba(0,255,157,.05), transparent 60%),
+                  rgba(0,0,0,.55);
+      pointer-events:none;
+    }
+    header{
+      padding:40px 20px 10px;
+      text-align:center;
+    }
+    .brand{
+      display:inline-block;
+      padding:14px 20px;
+      border:1px solid rgba(255,255,255,.08);
+      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.3));
+      backdrop-filter: blur(6px);
+      border-radius:12px;
+      text-transform:uppercase;
+      letter-spacing:.2em;
+      font-family: Montserrat, Inter, sans-serif;
+      font-weight:700;
+      font-size: clamp(20px, 3.2vw, 36px);
+      box-shadow: 0 10px 30px rgba(0,0,0,.35), 0 0 0 1px rgba(255,255,255,.03) inset;
+    }
+    .brand .accent{color:var(--accent); text-shadow:0 0 18px rgba(0,255,157,.25);}
+    .tagline{
+      margin-top:10px; color:var(--muted); font-size:clamp(14px, 1.8vw, 16px);
+    }
+    main{
+      max-width:1100px;
+      margin: 24px auto 80px;
+      padding: 0 18px;
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap:22px;
+    }
+    @media (max-width: 900px){
+      .grid{ grid-template-columns: 1fr; }
+    }
+    .card{
+      background: rgba(19,19,19,.82);
+      border: 1px solid rgba(255,255,255,.06);
+      border-radius:16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.45);
+      overflow:hidden;
+    }
+    .card .inner{ padding:22px; }
+    h2{
+      margin:0 0 8px 0;
+      font-family: Montserrat, Inter, sans-serif;
+      font-weight:700;
+      letter-spacing:.02em;
+    }
+    .sub{ color:var(--muted); margin:0 0 16px 0; }
+    ul{ padding-left:18px; margin:0 0 12px 0; }
+    li{ margin:6px 0; }
+    .tiers{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 900px){ .tiers{ grid-template-columns: 1fr; } }
+    .tier{
+      background: linear-gradient(180deg, rgba(255,255,255,.02), rgba(0,0,0,.2));
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:14px;
+      padding:18px;
+      display:flex; flex-direction:column; justify-content:space-between;
+    }
+    .price{ font-size:28px; font-weight:700; margin:4px 0 10px 0; }
+    .perk{ color:var(--muted); font-size:14px; }
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      padding:12px 14px;
+      border-radius:10px;
+      border:1px solid var(--ring);
+      background: radial-gradient(100% 100% at 100% 0, rgba(0,255,157,.18), rgba(0,0,0,.5));
+      color:#001a10;
+      font-weight:700;
+      text-decoration:none;
+      margin-top:12px;
+      transition: transform .08s ease, box-shadow .2s ease;
+      box-shadow: 0 8px 20px rgba(0,255,157,.15);
+      will-change: transform;
+    }
+    .btn:hover{ transform: translateY(-1px); }
+    .btn:active{ transform: translateY(0); }
+    .btn span{ color:#001a10; }
+    .ghost{
+      background: transparent;
+      border-color: rgba(255,255,255,.14);
+      color: var(--text);
+      box-shadow:none;
+    }
+    .notice{
+      font-size:13px; color:var(--muted); margin-top:6px;
+    }
+    footer{
+      max-width:1100px; margin:40px auto 80px; padding:0 18px;
+      color:var(--muted);
+      text-align:center;
+    }
+    .footer-links{
+      display:flex; gap:12px; justify-content:center; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .chip{
+      border:1px solid rgba(255,255,255,.1);
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.03);
+      text-decoration:none; color:var(--text);
+      font-size:14px;
+    }
+    .code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size:12px; background:rgba(0,0,0,.5); padding:2px 6px; border-radius:6px; border:1px solid rgba(255,255,255,.08);
+    }
+    /* small helper bar */
+    .helper{
+      position:sticky; top:0; z-index:2;
+      backdrop-filter: blur(8px);
+      background: rgba(10,10,10,.6);
+      border-bottom:1px solid rgba(255,255,255,.06);
+      padding:8px 16px; font-size:13px; color:var(--muted);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay"></div>
+
+  <div class="helper">
+    Tip: when you're ready, open this file and set <span class="code">PAYPAL_BASE</span> to your PayPal.me link (e.g. <span class="code">https://paypal.me/YourName</span>).
+  </div>
+
+  <header>
+    <div class="brand"><span class="accent">ZeroPoint</span> DayZ</div>
+    <div class="tagline">Support the server &amp; skip the queue — every donation keeps us alive.</div>
+  </header>
+
+  <main>
+    <div class="grid">
+      <section class="card">
+        <div class="inner">
+          <h2>Priority Queue</h2>
+          <p class="sub">Donating grants you priority queue so you can join faster during peak hours.</p>
+          <ul>
+            <li>Immediate priority tag applied after staff confirmation</li>
+            <li>Supports server costs: hardware, DDoS protection, mods</li>
+            <li>Fair-use: priority doesn't bypass bans or rules</li>
+          </ul>
+          <p class="notice"><strong>Note:</strong> Donations are voluntary and non-refundable. Priority is a courtesy perk and may take up to one restart cycle to apply.</p>
+        </div>
+      </section>
+
+      <aside class="card">
+        <div class="inner">
+          <h2>Contact</h2>
+          <p class="sub">Questions or problems with a donation? Reach us anytime.</p>
+          <div class="footer-links" style="justify-content:flex-start">
+            <a class="chip" id="discordLink" href="#" target="_blank" rel="noopener">Discord</a>
+            <a class="chip" href="mailto:admin@zeropoint-dayz.example">Email</a>
+          </div>
+          <p class="notice">Set your real Discord invite and email in the HTML when you're ready.</p>
+        </div>
+      </aside>
+    </div>
+
+    <section class="card" style="margin-top:22px;">
+      <div class="inner">
+        <h2>Donation Tiers</h2>
+        <p class="sub">Choose a tier. You can always donate a custom amount.</p>
+
+        <div class="tiers">
+          <div class="tier">
+            <div>
+              <div class="price">$5</div>
+              <div class="perk">• Priority for 1 month</div>
+              <div class="perk">• Discord Donor role</div>
+            </div>
+            <div>
+              <a class="btn" href="#" onclick="return donate(5)"><span>Donate $5</span></a>
+              <div class="notice">Bronze Supporter</div>
+            </div>
+          </div>
+
+          <div class="tier">
+            <div>
+              <div class="price">$10</div>
+              <div class="perk">• Priority for 2 months</div>
+              <div class="perk">• Donor role • Thank-you in Discord</div>
+            </div>
+            <div>
+              <a class="btn" href="#" onclick="return donate(10)"><span>Donate $10</span></a>
+              <div class="notice">Silver Supporter</div>
+            </div>
+          </div>
+
+          <div class="tier">
+            <div>
+              <div class="price">$20</div>
+              <div class="perk">• Priority for 4 months</div>
+              <div class="perk">• Donor role • Name on hall-of-fame</div>
+            </div>
+            <div>
+              <a class="btn" href="#" onclick="return donate(20)"><span>Donate $20</span></a>
+              <div class="notice">Gold Supporter</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px">
+          <a class="btn ghost" href="#" onclick="return customDonate()"><span>Donate a custom amount</span></a>
+          <div class="notice">You'll be asked to enter an amount in USD.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:22px;">
+      <div class="inner">
+        <h2>FAQ</h2>
+        <details>
+          <summary>How do I get priority after donating?</summary>
+          <p>Open a ticket on Discord with your transaction ID and Steam name. Staff will apply priority at the next restart.</p>
+        </details>
+        <details>
+          <summary>Can I donate via another method?</summary>
+          <p>Right now we accept PayPal. More methods may be added later.</p>
+        </details>
+        <details>
+          <summary>Is my donation refundable?</summary>
+          <p>Donations are voluntary and non-refundable. They don't grant rule exemptions.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© <span id="year"></span> ZeroPoint DayZ — Fan project, not affiliated with Bohemia Interactive.</div>
+    <div class="footer-links">
+      <a class="chip" href="#" onclick="copyPayPal()">Copy PayPal link</a>
+      <a class="chip" href="#" onclick="copyDiscord()">Copy Discord invite</a>
+    </div>
+  </footer>
+
+  <script>
+    // ======= QUICK SETTINGS =======
+    // Put your PayPal.me base link here (no amount at the end), e.g. "https://paypal.me/YourName"
+    const PAYPAL_BASE = ""; // <-- add later
+
+    // Optional: put your Discord invite here, e.g. "https://discord.gg/yourcode"
+    const DISCORD_INVITE = ""; // <-- add later
+
+    // ======= DO NOT EDIT BELOW (unless you want to) =======
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const dLink = document.getElementById('discordLink');
+    if (DISCORD_INVITE){
+      dLink.href = DISCORD_INVITE;
+    } else {
+      dLink.removeAttribute('href');
+    }
+
+    function donate(amount){
+      if(!PAYPAL_BASE){
+        alert("Set your PayPal link first. Open index.html and set PAYPAL_BASE near the bottom.");
+        return false;
+      }
+      const url = PAYPAL_BASE.replace(/\/$/, '') + '/' + encodeURIComponent(amount);
+      window.open(url, '_blank');
+      return false;
+    }
+    function customDonate(){
+      if(!PAYPAL_BASE){
+        alert("Set your PayPal link first. Open index.html and set PAYPAL_BASE near the bottom.");
+        return false;
+      }
+      const val = prompt("Enter custom amount in USD:");
+      if(!val){ return false; }
+      const num = Number(val);
+      if(isNaN(num) || num <= 0){ alert("Please enter a valid number."); return false; }
+      const url = PAYPAL_BASE.replace(/\/$/, '') + '/' + encodeURIComponent(num);
+      window.open(url, '_blank');
+      return false;
+    }
+
+    function copyPayPal(){
+      const t = PAYPAL_BASE || "https://paypal.me/YourName";
+      navigator.clipboard.writeText(t).then(()=>{
+        alert("PayPal link copied to clipboard!");
+      });
+      return false;
+    }
+    function copyDiscord(){
+      const t = DISCORD_INVITE || "https://discord.gg/yourcode";
+      navigator.clipboard.writeText(t).then(()=>{
+        alert("Discord invite copied to clipboard!");
+      });
+      return false;
+    }
+  </script>
+</body>
+</html>
